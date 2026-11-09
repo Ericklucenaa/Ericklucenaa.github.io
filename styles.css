@@ -11,6 +11,7 @@
   --marca-2: #2c5a85;
   --acento: #15803d; /* verde "teste passou" */
   --acento-suave: #dcfce7;
+  --logo-check: #4ade80;
   --erro: #b91c1c;
   --erro-suave: #fee2e2;
   --aviso: #a16207;
@@ -38,6 +39,7 @@
     --marca-2: #a9cbf0;
     --acento: #4ade80;
     --acento-suave: rgb(74 222 128 / 0.12);
+    --logo-check: #166534;
     --erro: #f87171;
     --erro-suave: rgb(248 113 113 / 0.14);
     --aviso: #fbbf24;
@@ -60,6 +62,7 @@
   --marca-2: #a9cbf0;
   --acento: #4ade80;
   --acento-suave: rgb(74 222 128 / 0.12);
+  --logo-check: #166534;
   --erro: #f87171;
   --erro-suave: rgb(248 113 113 / 0.14);
   --aviso: #fbbf24;
@@ -183,15 +186,18 @@ h3 {
 }
 
 .marca-icone {
-  display: grid;
-  place-items: center;
   width: 36px;
   height: 36px;
-  border-radius: 10px;
-  background: var(--marca);
-  color: var(--bg);
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
+  flex: none;
+}
+.logo-fundo {
+  fill: var(--marca);
+}
+.logo-linha {
+  fill: var(--bg);
+}
+.logo-check {
+  stroke: var(--logo-check);
 }
 
 .menu {
