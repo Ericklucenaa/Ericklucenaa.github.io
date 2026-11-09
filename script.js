@@ -1,11 +1,5 @@
 ;(() => {
-  const ler = (k) => {
-    try {
-      return localStorage.getItem(k)
-    } catch (e) {
-      return null
-    }
-  }
+  const raiz = document.documentElement
   const salvar = (k, v) => {
     try {
       localStorage.setItem(k, v)
@@ -15,47 +9,64 @@
   }
   const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // ---------- efeito CRT ----------
-  const botaoCrt = document.querySelector('.crt-botao')
-  const aplicarCrt = (ligado) => {
-    document.body.classList.toggle('crt', ligado)
-    botaoCrt.setAttribute('aria-pressed', String(ligado))
-  }
-  aplicarCrt(ler('crt') !== 'off')
-  botaoCrt.addEventListener('click', () => {
-    const ligado = !document.body.classList.contains('crt')
-    aplicarCrt(ligado)
-    salvar('crt', ligado ? 'on' : 'off')
+  // ---------- recado para quem abre o DevTools ----------
+  console.log(
+    '%cOlá! 👋 Se você está inspecionando este site, a gente provavelmente se daria bem.',
+    'font: 600 14px system-ui; color: #2c5a85',
+  )
+  console.log(
+    '%cQA olhando o console é bom sinal. Me chama: ericklucena2020@gmail.com · linkedin.com/in/erick-lucena-b0a96a1b9',
+    'font: 13px system-ui; color: #15803d',
+  )
+
+  // ---------- tema claro/escuro ----------
+  const temaAtual = () =>
+    raiz.dataset.theme ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+  document.querySelector('.tema')?.addEventListener('click', () => {
+    const novo = temaAtual() === 'dark' ? 'light' : 'dark'
+    raiz.dataset.theme = novo
+    salvar('tema', novo)
   })
 
   // ---------- menu mobile ----------
   const botaoMenu = document.querySelector('.menu-botao')
   const menu = document.getElementById('menu')
-  botaoMenu.addEventListener('click', () => {
-    const aberto = menu.classList.toggle('aberto')
-    botaoMenu.setAttribute('aria-expanded', String(aberto))
-  })
-  menu.querySelectorAll('a').forEach((a) =>
-    a.addEventListener('click', () => {
-      menu.classList.remove('aberto')
-      botaoMenu.setAttribute('aria-expanded', 'false')
-    }),
-  )
+  if (botaoMenu && menu) {
+    botaoMenu.addEventListener('click', () => {
+      const aberto = menu.classList.toggle('aberto')
+      botaoMenu.setAttribute('aria-expanded', String(aberto))
+    })
+    menu.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        menu.classList.remove('aberto')
+        botaoMenu.setAttribute('aria-expanded', 'false')
+      }),
+    )
+  }
+
+  // ---------- borda do topo ao rolar ----------
+  const topo = document.querySelector('.topo')
+  const aoRolar = () => topo?.classList.toggle('rolou', window.scrollY > 8)
+  window.addEventListener('scroll', aoRolar, { passive: true })
+  aoRolar()
 
   // ---------- link ativo no menu ----------
-  const links = [...menu.querySelectorAll('a[href^="#"]')]
-  const secoes = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean)
-  const obsSecao = new IntersectionObserver(
-    (entradas) =>
-      entradas.forEach((e) => {
-        if (e.isIntersecting)
-          links.forEach((a) => a.classList.toggle('ativo', a.getAttribute('href') === `#${e.target.id}`))
-      }),
-    { rootMargin: '-45% 0px -50% 0px' },
-  )
-  secoes.forEach((s) => obsSecao.observe(s))
+  if (menu) {
+    const links = [...menu.querySelectorAll('a[href^="#"]')]
+    const secoes = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean)
+    const obs = new IntersectionObserver(
+      (entradas) =>
+        entradas.forEach((e) => {
+          if (e.isIntersecting)
+            links.forEach((a) => a.classList.toggle('ativo', a.getAttribute('href') === `#${e.target.id}`))
+        }),
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+    secoes.forEach((s) => obs.observe(s))
+  }
 
-  // ---------- filtro de missões ----------
+  // ---------- filtros de projetos ----------
   const filtros = document.querySelectorAll('.filtro')
   const projetos = document.querySelectorAll('.projeto')
   filtros.forEach((f) =>
@@ -94,57 +105,39 @@
 
   // ---------- copiar e-mail ----------
   const copiar = document.getElementById('copiar-email')
-  copiar.addEventListener('click', async () => {
+  copiar?.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(copiar.dataset.email)
-      copiar.textContent = 'Copiado ✔'
+      copiar.textContent = 'E-mail copiado ✓'
     } catch (e) {
       copiar.textContent = copiar.dataset.email
     }
     setTimeout(() => (copiar.textContent = 'Copiar e-mail'), 2500)
   })
 
-  document.getElementById('ano').textContent = new Date().getFullYear()
+  const ano = document.getElementById('ano')
+  if (ano) ano.textContent = new Date().getFullYear()
 
-  // ---------- "CONTINUE?" contagem regressiva (só enquanto visível) ----------
-  const contagem = document.getElementById('contagem')
-  let timerContagem = null
-  if (!semMovimento) {
-    new IntersectionObserver(([e]) => {
-      clearInterval(timerContagem)
-      if (!e.isIntersecting) return
-      let n = 9
-      contagem.textContent = n
-      timerContagem = setInterval(() => {
-        n = n === 0 ? 9 : n - 1
-        contagem.textContent = n
-      }, 1000)
-    }).observe(contagem)
-  }
-
-  // ---------- terminal da missão principal: linhas aparecem ao entrar na tela ----------
+  // ---------- terminal: linhas aparecem como numa execução real ----------
   const codigo = document.querySelector('.terminal-corpo code')
   if (codigo && !semMovimento) {
     const linhas = codigo.innerHTML.split('\n')
     codigo.innerHTML = ''
-    new IntersectionObserver(([e], obs) => {
-      if (!e.isIntersecting) return
-      obs.disconnect()
-      let i = 0
-      const proxima = () => {
-        if (i >= linhas.length) return
-        codigo.innerHTML += (i ? '\n' : '') + linhas[i]
-        i += 1
-        setTimeout(proxima, linhas[i - 1].trim() === '' ? 150 : 230)
-      }
-      proxima()
-    }).observe(codigo)
+    let i = 0
+    const proxima = () => {
+      if (i >= linhas.length) return
+      codigo.innerHTML += (i ? '\n' : '') + linhas[i]
+      const pausa = linhas[i].includes('Running') ? 420 : linhas[i].trim() === '' ? 200 : 260
+      i += 1
+      setTimeout(proxima, pausa)
+    }
+    setTimeout(proxima, 500)
   }
 
-  // ---------- revelar blocos ao rolar ----------
+  // ---------- revelar seções ao rolar ----------
   if (!semMovimento && 'IntersectionObserver' in window) {
     const alvos = document.querySelectorAll(
-      '.conquista, .dialogo, .fase, .projeto, .slot, .contato',
+      '.numeros, .sobre, .linha-tempo > li, .projeto, .painel:not([hidden]), .hab-card, .extras > div, .contato',
     )
     const obs = new IntersectionObserver(
       (entradas) =>
@@ -163,26 +156,23 @@
   }
 
   // =====================================================
-  // Minijogo: caça aos bugs
+  // Caça aos bugs: desligada por padrão, ativada no rodapé
   // =====================================================
-  const placar = document.getElementById('placar-bugs')
-  const caixaPlacar = document.querySelector('.placar')
+  const botaoCaca = document.querySelector('.caca-botao')
   const toasts = document.querySelector('.toasts')
+  if (!botaoCaca || !toasts) return
+
+  let ligada = false
   let capturados = 0
   let bugAtivo = null
+  let agendamento = null
 
-  const toast = (html, grande = false) => {
+  const toast = (texto) => {
     const t = document.createElement('div')
-    t.className = `toast${grande ? ' grande' : ''}`
-    t.innerHTML = html
+    t.className = 'toast'
+    t.textContent = texto
     toasts.appendChild(t)
-    setTimeout(() => t.remove(), grande ? 4200 : 2600)
-  }
-
-  const CONQUISTAS = {
-    1: 'Primeiro bug capturado! Isso é <b>QA</b> na prática.',
-    5: '<b>CONQUISTA:</b> Caçador de bugs',
-    10: '<b>CONQUISTA:</b> Zero bugs em produção',
+    setTimeout(() => t.remove(), 3200)
   }
 
   const posAleatoria = () => ({
@@ -190,12 +180,20 @@
     y: 90 + Math.random() * (window.innerHeight - 160),
   })
 
+  const removerBug = () => {
+    if (!bugAtivo) return
+    clearTimeout(bugAtivo._andar)
+    clearTimeout(bugAtivo._fuga)
+    bugAtivo.remove()
+    bugAtivo = null
+  }
+
   const soltarBug = () => {
-    if (bugAtivo || document.hidden) return
+    if (!ligada || bugAtivo || document.hidden) return
     const bug = document.createElement('button')
     bug.type = 'button'
     bug.className = 'bug'
-    bug.setAttribute('aria-label', 'Um bug apareceu! Clique para capturar')
+    bug.setAttribute('aria-label', 'Bug na tela: clique para capturar')
     bug.innerHTML = '<svg viewBox="0 0 8 8" aria-hidden="true"><use href="#sprite-bug"/></svg>'
     const p = posAleatoria()
     bug.style.left = `${p.x}px`
@@ -203,55 +201,50 @@
     document.body.appendChild(bug)
     bugAtivo = bug
 
-    // o bug passeia pela tela
     let passos = 0
     const andar = () => {
       if (!bug.isConnected || semMovimento) return
       const d = posAleatoria()
       bug.style.left = `${d.x}px`
       bug.style.top = `${d.y}px`
-      passos += 1
-      if (passos < 4) bug._timer = setTimeout(andar, 2600)
+      if (++passos < 4) bug._andar = setTimeout(andar, 2600)
     }
-    bug._timer = setTimeout(andar, 60)
-
-    // se ninguém pegar, ele foge
-    const fuga = setTimeout(() => {
-      bug.remove()
-      bugAtivo = null
-    }, 10500)
+    bug._andar = setTimeout(andar, 60)
+    bug._fuga = setTimeout(removerBug, 10500)
 
     bug.addEventListener('click', () => {
-      clearTimeout(bug._timer)
-      clearTimeout(fuga)
+      clearTimeout(bug._andar)
+      clearTimeout(bug._fuga)
       const r = bug.getBoundingClientRect()
       bug.style.transition = 'none'
       bug.style.left = `${r.left}px`
       bug.style.top = `${r.top}px`
       bug.classList.add('pego')
-      setTimeout(() => {
-        bug.remove()
-        bugAtivo = null
-      }, 260)
-
+      setTimeout(removerBug, 260)
       capturados += 1
-      placar.textContent = capturados
-      caixaPlacar.classList.remove('pulou')
-      void caixaPlacar.offsetWidth
-      caixaPlacar.classList.add('pulou')
-      const recorde = Math.max(capturados, Number(ler('recorde-bugs') || 0))
-      salvar('recorde-bugs', String(recorde))
-
-      if (CONQUISTAS[capturados]) toast(CONQUISTAS[capturados], capturados > 1)
-      else toast(`<b>+1 BUG</b> capturado · total ${capturados}`)
+      const marcos = { 1: 'Primeiro bug capturado. Isso é QA na prática!', 5: 'Cinco bugs! Você daria um ótimo QA.', 10: 'Dez bugs. Zero bugs em produção!' }
+      toast(marcos[capturados] || `Bug capturado · total: ${capturados}`)
     })
   }
 
-  // primeiro bug aparece depois de um tempo; os próximos em intervalos aleatórios
-  const agendar = (ms) =>
-    setTimeout(() => {
+  const agendar = (ms) => {
+    agendamento = setTimeout(() => {
       soltarBug()
-      agendar(9000 + Math.random() * 9000)
+      agendar(6000 + Math.random() * 7000)
     }, ms)
-  agendar(6000)
+  }
+
+  botaoCaca.addEventListener('click', () => {
+    ligada = !ligada
+    botaoCaca.setAttribute('aria-pressed', String(ligada))
+    botaoCaca.textContent = ligada ? 'Parar a caça aos bugs' : 'Encontrou um bug? 🐞'
+    if (ligada) {
+      toast('Caça aos bugs ativada: alguns bugs vão aparecer pela tela. Clique neles!')
+      agendar(1200)
+    } else {
+      clearTimeout(agendamento)
+      removerBug()
+      if (capturados) toast(`Caça encerrada: ${capturados} bug(s) capturado(s).`)
+    }
+  })
 })()
