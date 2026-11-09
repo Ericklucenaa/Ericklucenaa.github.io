@@ -1261,3 +1261,14 @@ h3 {
     padding: 20px 16px;
   }
 }
+
+.numeros-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--borda);
+  text-underline-offset: 3px;
+}
+.numeros-link:hover {
+  color: var(--marca-2);
+  text-decoration-color: currentColor;
+}
