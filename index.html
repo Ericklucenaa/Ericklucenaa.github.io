@@ -3,258 +3,290 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Erick Henrique Lucena · QA Engineer</title>
+    <title>Erick Henrique · QA Engineer · Player 1</title>
     <meta
       name="description"
       content="Erick Henrique Lucena Silva: QA Engineer em Belo Horizonte. Testes funcionais e de regressão, automação com Cypress, testes de API e integração contínua."
     />
-    <meta property="og:title" content="Erick Henrique Lucena · QA Engineer" />
+    <meta property="og:title" content="Erick Henrique · QA Engineer" />
     <meta
       property="og:description"
-      content="Testes funcionais, automação com Cypress, testes de API e CI. Veja meus projetos."
+      content="Player 1: QA Engineer. Testes funcionais, automação com Cypress, testes de API e CI."
     />
-    <meta property="og:image" content="assets/foto.jpg" />
+    <meta property="og:image" content="assets/avatar-pixel.png" />
     <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0b0b1a" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script>
-      // aplica o tema salvo antes da pintura, para não piscar
-      try {
-        const t = localStorage.getItem('tema')
-        if (t) document.documentElement.dataset.theme = t
-      } catch (e) {}
-    </script>
   </head>
-  <body>
+  <body class="crt">
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
-    <header class="topo">
+    <!-- ================= HUD ================= -->
+    <header class="hud">
       <nav class="nav container" aria-label="Principal">
         <a class="marca" href="#inicio" aria-label="Início">
-          <span class="marca-icone" aria-hidden="true">EH</span>
-          <span class="marca-nome">Erick Henrique</span>
+          <span class="marca-icone" aria-hidden="true">P1</span>
+          <span class="marca-nome">ERICK.QA</span>
         </a>
         <button class="menu-botao" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
           <span></span><span></span>
         </button>
         <ul class="menu" id="menu">
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#experiencia">Experiência</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#perfil">Perfil</a></li>
+          <li><a href="#fases">Fases</a></li>
+          <li><a href="#missoes">Missões</a></li>
+          <li><a href="#inventario">Inventário</a></li>
           <li><a href="#contato">Contato</a></li>
-          <li>
-            <button class="tema" type="button" aria-label="Alternar tema claro/escuro">
-              <svg class="ic-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
-              <svg class="ic-lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
-            </button>
+          <li class="hud-extra">
+            <span class="placar" title="Bugs capturados nesta visita" aria-live="polite">
+              <svg viewBox="0 0 8 8" aria-hidden="true" class="mini-bug"><use href="#sprite-bug" /></svg>
+              <span id="placar-bugs">0</span>
+            </span>
+            <button class="crt-botao" type="button" aria-pressed="true" title="Efeito de tela CRT">CRT</button>
           </li>
         </ul>
       </nav>
     </header>
 
     <main id="conteudo">
-      <!-- ============ HERO ============ -->
+      <!-- ================= TELA INICIAL ================= -->
       <section class="hero container" id="inicio">
         <div class="hero-texto">
-          <p class="selo"><span class="ponto" aria-hidden="true"></span> Aberto a oportunidades</p>
-          <h1>
-            Erick Henrique<br />
-            <span class="destaque">QA Engineer</span>
-          </h1>
+          <p class="press-start"><span class="pisca">▶</span> PLAYER 1 · PRESS START</p>
+          <h1>ERICK<br />HENRIQUE</h1>
+          <p class="classe">
+            Classe: <strong>QA Engineer</strong> <span class="sep">·</span> Lv. <strong>5</strong>
+            <span class="sep">·</span> Belo Horizonte, MG
+          </p>
+
+          <div class="xp" aria-label="Experiência: 5 anos em QA, de 2021 a 2026">
+            <div class="xp-topo"><span>XP</span><span>2021 → 2026</span></div>
+            <div class="xp-barra"><span style="--v: 82%"></span></div>
+          </div>
+
           <p class="hero-sub">
-            Garanto que o software funciona <strong>antes</strong> de chegar ao usuário: testes funcionais
-            e de regressão, automação com <strong>Cypress</strong>, testes de <strong>API</strong> e
+            Minha missão: encontrar os bugs <strong>antes</strong> do usuário. Testes funcionais e de
+            regressão, automação com <strong>Cypress</strong>, testes de <strong>API</strong> e
             integração contínua.
           </p>
           <div class="acoes">
-            <a class="botao primario" href="#projetos">Ver projetos</a>
-            <a class="botao" href="https://github.com/Ericklucenaa" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="ic"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
-              GitHub
-            </a>
-            <a class="botao" href="mailto:ericklucena2020@gmail.com">Fale comigo</a>
+            <a class="botao primario" href="#missoes">▶ Iniciar</a>
+            <a class="botao" href="https://github.com/Ericklucenaa" target="_blank" rel="noopener">GitHub</a>
+            <a class="botao" href="#contato">Contato</a>
           </div>
         </div>
 
-        <!-- "execução de testes" animada: a cara de QA do site -->
-        <figure class="terminal" aria-label="Exemplo de execução de testes automatizados">
-          <div class="terminal-barra" aria-hidden="true">
-            <span></span><span></span><span></span>
-            <p>npx cypress run</p>
+        <aside class="ficha caixa" aria-label="Ficha do personagem">
+          <div class="ficha-topo">
+            <div class="avatar" tabindex="0" aria-label="Avatar em pixel art; passe o mouse para ver a foto">
+              <img class="avatar-pixel" src="assets/avatar-pixel.png" alt="" width="144" height="144" />
+              <img class="avatar-foto" src="assets/foto.jpg" alt="Foto de Erick Henrique Lucena Silva" width="144" height="144" />
+            </div>
+            <div>
+              <p class="ficha-nome">ERICK H.</p>
+              <p class="ficha-classe">QA Engineer</p>
+              <p class="status"><span class="ponto" aria-hidden="true"></span> Disponível para o próximo time</p>
+            </div>
           </div>
-          <pre class="terminal-corpo" aria-hidden="true"><code><span class="t-cinza">Running: </span>api/login.cy.ts
-  <span class="t-ok">✓</span> autentica e devolve token JWT
-  <span class="t-ok">✓</span> recusa senha incorreta
-<span class="t-cinza">Running: </span>ui/lista-de-compras.cy.ts
-  <span class="t-ok">✓</span> pesquisa e adiciona à lista
-  <span class="t-ok">✓</span> exibe dados simulados (intercept)
-<span class="t-cinza">Running: </span>ui/cadastro.cy.ts
-  <span class="t-ok">✓</span> cadastra administrador
 
-<span class="t-ok">✔ All specs passed!   27/27</span><span class="cursor"></span></code></pre>
-          <figcaption class="sr-only">
-            Saída de terminal mostrando testes de API e de interface passando.
-          </figcaption>
-        </figure>
+          <p class="ficha-rotulo">ATRIBUTOS</p>
+          <ul class="atributos">
+            <li><span>Testes funcionais</span><i class="pips" style="--n: 5" aria-label="5 de 5"></i></li>
+            <li><span>Análise de requisitos</span><i class="pips" style="--n: 5" aria-label="5 de 5"></i></li>
+            <li><span>Automação · Cypress</span><i class="pips" style="--n: 4" aria-label="4 de 5"></i></li>
+            <li><span>Testes de API</span><i class="pips" style="--n: 4" aria-label="4 de 5"></i></li>
+            <li><span>Comunicação</span><i class="pips" style="--n: 5" aria-label="5 de 5"></i></li>
+            <li><span>Performance · JMeter</span><i class="pips" style="--n: 3" aria-label="3 de 5"></i></li>
+          </ul>
+        </aside>
       </section>
 
-      <!-- ============ NÚMEROS ============ -->
-      <section class="numeros container" aria-label="Destaques">
-        <div><strong>5+</strong><span>anos em QA e automação</span></div>
-        <div><strong>27</strong><span>testes no projeto destaque, rodando em CI</span></div>
-        <div><strong>15</strong><span>repositórios públicos no GitHub</span></div>
-        <div><strong>3</strong><span>idiomas: português, inglês e espanhol</span></div>
-      </section>
-
-      <!-- ============ SOBRE ============ -->
-      <section class="secao container" id="sobre">
-        <div class="sobre">
-          <img
-            class="foto"
-            src="assets/foto.jpg"
-            alt="Foto de Erick Henrique Lucena Silva"
-            width="160"
-            height="160"
-          />
-          <div>
-            <p class="rotulo">Sobre mim</p>
-            <h2>Qualidade como parte do processo, não como etapa final</h2>
-            <p>
-              Sou analista de sistemas focado em <strong>garantia de qualidade de software</strong>, em
-              Belo Horizonte. Trabalho com testes funcionais e de regressão, análise de requisitos e
-              regras de negócio, e automação de testes web com Cypress, sempre dentro de times ágeis.
-            </p>
-            <p>
-              Antes da tecnologia, fui gerente administrativo por sete anos e instrutor de informática.
-              Daí vem o meu olhar para <strong>processos, comunicação e a experiência de quem usa</strong>
-              o sistema. Hoje também uso IA para ganhar produtividade na criação de cenários e na análise
-              de falhas.
-            </p>
-          </div>
+      <!-- ================= CONQUISTAS ================= -->
+      <section class="container conquistas" aria-label="Conquistas">
+        <div class="conquista caixa">
+          <span class="trofeu" aria-hidden="true">★</span>
+          <div><p class="c-titulo">Veterano de QA</p><p>5+ anos em testes e automação</p></div>
+        </div>
+        <div class="conquista caixa">
+          <span class="trofeu" aria-hidden="true">✔</span>
+          <div><p class="c-titulo">Pipeline verde</p><p>27/27 testes passando em CI</p></div>
+        </div>
+        <div class="conquista caixa">
+          <span class="trofeu" aria-hidden="true">◆</span>
+          <div><p class="c-titulo">Construtor</p><p>15 repositórios públicos</p></div>
+        </div>
+        <div class="conquista caixa">
+          <span class="trofeu" aria-hidden="true">✦</span>
+          <div><p class="c-titulo">Poliglota</p><p>Português, inglês e espanhol</p></div>
         </div>
       </section>
 
-      <!-- ============ EXPERIÊNCIA ============ -->
-      <section class="secao container" id="experiencia">
-        <p class="rotulo">Trajetória</p>
-        <h2>Experiência profissional</h2>
-        <ol class="linha-tempo">
-          <li>
-            <div class="lt-cabeca">
-              <h3>Analista de Testes / QA</h3>
-              <span class="periodo">2025 – atual</span>
+      <!-- ================= PERFIL ================= -->
+      <section class="secao container" id="perfil">
+        <h2><span class="num">01</span> Perfil</h2>
+        <div class="dialogo caixa">
+          <p class="falante">ERICK</p>
+          <p>
+            Sou analista de sistemas focado em <strong>garantia de qualidade de software</strong>. Trabalho
+            com testes funcionais e de regressão, análise de requisitos e regras de negócio, e automação
+            de testes web com Cypress, sempre em times ágeis.
+          </p>
+          <p>
+            Antes da tecnologia, fui gerente administrativo por sete anos e instrutor de informática. Daí
+            vem o meu olhar para <strong>processos, comunicação e a experiência de quem usa</strong> o
+            sistema. Também uso IA para ganhar produtividade na criação de cenários e na análise de
+            falhas.
+          </p>
+          <span class="dialogo-seta" aria-hidden="true">▼</span>
+        </div>
+      </section>
+
+      <!-- ================= FASES ================= -->
+      <section class="secao container" id="fases">
+        <h2><span class="num">02</span> Fases</h2>
+        <ol class="fases">
+          <li class="fase proxima">
+            <div class="fase-selo">FASE 5</div>
+            <div class="fase-corpo caixa">
+              <div class="fase-cabeca">
+                <h3>Próxima fase: sua empresa?</h3>
+                <span class="tag-status desbloquear">A DESBLOQUEAR</span>
+              </div>
+              <p>Procurando um time de produto para levar qualidade, automação e boas conversas entre QA e desenvolvimento.</p>
+              <a class="link-fase" href="#contato">Desbloquear fase →</a>
             </div>
-            <p class="empresa">90 Tecnologia (90TI)</p>
-            <ul>
-              <li>Execução de testes funcionais e de regressão das funcionalidades entregues.</li>
-              <li>Análise de requisitos e regras de negócio, apontando inconsistências e impactos antes do desenvolvimento.</li>
-              <li>Elaboração de cenários e casos de teste; registro de defeitos com tudo o que o time precisa para reproduzir e corrigir.</li>
-              <li>Acompanhamento das correções e reteste junto ao time de desenvolvimento, em processo ágil.</li>
-            </ul>
           </li>
-          <li>
-            <div class="lt-cabeca">
-              <h3>Analista de Sistemas · QA, Automação de Testes e UX</h3>
-              <span class="periodo">2021 – 2025</span>
+          <li class="fase">
+            <div class="fase-selo">FASE 4</div>
+            <div class="fase-corpo caixa">
+              <div class="fase-cabeca">
+                <h3>Analista de Testes / QA</h3>
+                <span class="tag-status">2025 – 2026</span>
+              </div>
+              <p class="empresa">90 Tecnologia (90TI)</p>
+              <ul>
+                <li>Execução de testes funcionais e de regressão das funcionalidades entregues.</li>
+                <li>Análise de requisitos e regras de negócio, apontando inconsistências e impactos antes do desenvolvimento.</li>
+                <li>Elaboração de cenários e casos de teste; registro de defeitos com tudo o que o time precisa para reproduzir e corrigir.</li>
+                <li>Acompanhamento das correções e reteste junto ao time de desenvolvimento, em processo ágil.</li>
+              </ul>
             </div>
-            <p class="empresa">Memory</p>
-            <ul>
-              <li>Responsável pela automação de testes web com Cypress.</li>
-              <li>Testes funcionais e de regressão, identificação e reporte de defeitos.</li>
-              <li>Análise de requisitos e metodologias ágeis para otimizar o ciclo de desenvolvimento.</li>
-              <li>Atuação junto aos desenvolvedores e em UX para entregas robustas e de alta performance.</li>
-            </ul>
           </li>
-          <li>
-            <div class="lt-cabeca">
-              <h3>Gerente Administrativo</h3>
-              <span class="periodo">2014 – 2021</span>
+          <li class="fase">
+            <div class="fase-selo">FASE 3</div>
+            <div class="fase-corpo caixa">
+              <div class="fase-cabeca">
+                <h3>Analista de Sistemas · QA, Automação e UX</h3>
+                <span class="tag-status">2021 – 2025</span>
+              </div>
+              <p class="empresa">Memory</p>
+              <ul>
+                <li>Responsável pela automação de testes web com Cypress.</li>
+                <li>Testes funcionais e de regressão, identificação e reporte de defeitos.</li>
+                <li>Análise de requisitos e metodologias ágeis para otimizar o ciclo de desenvolvimento.</li>
+                <li>Atuação junto aos desenvolvedores e em UX para entregas robustas e de alta performance.</li>
+              </ul>
             </div>
-            <p class="empresa">Official Store</p>
-            <ul>
-              <li>Gestão de processos operacionais e administrativos com foco em eficiência.</li>
-              <li>Implantação de soluções tecnológicas para a experiência do cliente e a gestão interna.</li>
-              <li>Liderança de equipe e definição de estratégias para metas da empresa.</li>
-            </ul>
           </li>
-          <li>
-            <div class="lt-cabeca">
-              <h3>Instrutor de Cursos Livres</h3>
-              <span class="periodo">2012 – 2014</span>
+          <li class="fase">
+            <div class="fase-selo">FASE 2</div>
+            <div class="fase-corpo caixa">
+              <div class="fase-cabeca">
+                <h3>Gerente Administrativo</h3>
+                <span class="tag-status">2014 – 2021</span>
+              </div>
+              <p class="empresa">Official Store</p>
+              <ul>
+                <li>Gestão de processos operacionais e administrativos com foco em eficiência.</li>
+                <li>Implantação de soluções tecnológicas para a experiência do cliente e a gestão interna.</li>
+                <li>Liderança de equipe e definição de estratégias para metas da empresa.</li>
+              </ul>
             </div>
-            <p class="empresa">Centro de Formação Profissional</p>
-            <ul>
-              <li>Aulas de informática, criação de material didático e suporte técnico aos alunos.</li>
-            </ul>
+          </li>
+          <li class="fase">
+            <div class="fase-selo">FASE 1</div>
+            <div class="fase-corpo caixa">
+              <div class="fase-cabeca">
+                <h3>Instrutor de Cursos Livres</h3>
+                <span class="tag-status">2012 – 2014</span>
+              </div>
+              <p class="empresa">Centro de Formação Profissional</p>
+              <ul>
+                <li>Aulas de informática, criação de material didático e suporte técnico aos alunos.</li>
+              </ul>
+            </div>
           </li>
         </ol>
       </section>
 
-      <!-- ============ PROJETOS ============ -->
-      <section class="secao container" id="projetos">
-        <p class="rotulo">Portfólio</p>
-        <h2>Projetos</h2>
+      <!-- ================= MISSÕES ================= -->
+      <section class="secao container" id="missoes">
+        <h2><span class="num">03</span> Missões</h2>
 
-        <div class="filtros" role="tablist" aria-label="Filtrar projetos">
-          <button class="filtro ativo" role="tab" aria-selected="true" data-filtro="todos">Todos</button>
+        <div class="filtros" role="tablist" aria-label="Filtrar missões">
+          <button class="filtro ativo" role="tab" aria-selected="true" data-filtro="todos">Todas</button>
           <button class="filtro" role="tab" aria-selected="false" data-filtro="qa">Qualidade e automação</button>
           <button class="filtro" role="tab" aria-selected="false" data-filtro="dev">Desenvolvimento</button>
         </div>
 
-        <!-- projeto destaque -->
-        <article class="projeto destaque-projeto" data-tipo="qa">
-          <div class="dp-texto">
-            <p class="tag-destaque">Projeto destaque</p>
+        <article class="projeto missao-principal caixa" data-tipo="qa">
+          <div class="mp-texto">
+            <p class="tag-missao">★ MISSÃO PRINCIPAL · CONCLUÍDA</p>
             <h3>Cypress + ServeRest: testes E2E e de API</h3>
             <p>
               Suíte de automação para uma loja virtual com API REST e front-end em React. Os testes de
-              interface criam a massa de dados pela API e só usam o navegador para o que estão
-              testando: são rápidos, independentes e limpam tudo o que criam.
+              interface criam a massa de dados pela API e só usam o navegador para o que estão testando:
+              são rápidos, independentes e limpam tudo o que criam.
             </p>
-            <ul class="checks">
+            <p class="ficha-rotulo">OBJETIVOS CUMPRIDOS</p>
+            <ul class="objetivos">
               <li><b>27 testes</b>: 15 de API e 12 de interface</li>
               <li>Testes de <b>contrato</b> com JSON Schema (Ajv)</li>
               <li><b>cy.intercept</b> para inspecionar e simular respostas da rede</li>
               <li>Pipeline no <b>GitHub Actions</b>: lint, suítes em paralelo e relatório publicado</li>
               <li>TypeScript estrito, ESLint, Prettier e Page Objects</li>
             </ul>
-            <div class="links">
+            <div class="acoes">
               <a class="botao primario" href="https://github.com/Ericklucenaa/cypress-serverest" target="_blank" rel="noopener">Ver código</a>
-              <a class="botao" href="https://ericklucenaa.github.io/cypress-serverest/" target="_blank" rel="noopener">Relatório de testes</a>
+              <a class="botao" href="https://ericklucenaa.github.io/cypress-serverest/" target="_blank" rel="noopener">Relatório</a>
             </div>
           </div>
-          <div class="dp-painel" aria-hidden="true">
-            <div class="suite"><span>api/usuarios.cy.ts</span><b>6/6</b></div>
-            <div class="suite"><span>api/produtos.cy.ts</span><b>5/5</b></div>
-            <div class="suite"><span>api/login.cy.ts</span><b>4/4</b></div>
-            <div class="suite"><span>ui/login.cy.ts</span><b>4/4</b></div>
-            <div class="suite"><span>ui/cadastro.cy.ts</span><b>3/3</b></div>
-            <div class="suite"><span>ui/lista-de-compras.cy.ts</span><b>3/3</b></div>
-            <div class="suite"><span>ui/produtos-admin.cy.ts</span><b>2/2</b></div>
-            <div class="suite total"><span>CI · GitHub Actions</span><b>passing</b></div>
+          <div class="terminal" aria-hidden="true">
+            <div class="terminal-barra"><span></span><span></span><span></span><p>npx cypress run</p></div>
+            <pre class="terminal-corpo"><code><span class="t-cinza">Running</span> api/usuarios.cy.ts    <span class="t-ok">6/6</span>
+<span class="t-cinza">Running</span> api/produtos.cy.ts    <span class="t-ok">5/5</span>
+<span class="t-cinza">Running</span> api/login.cy.ts       <span class="t-ok">4/4</span>
+<span class="t-cinza">Running</span> ui/login.cy.ts        <span class="t-ok">4/4</span>
+<span class="t-cinza">Running</span> ui/cadastro.cy.ts     <span class="t-ok">3/3</span>
+<span class="t-cinza">Running</span> ui/lista-compras.cy.ts <span class="t-ok">3/3</span>
+<span class="t-cinza">Running</span> ui/produtos-admin.cy.ts <span class="t-ok">2/2</span>
+
+<span class="t-ok">✔ ALL SPECS PASSED  27/27</span>
+<span class="t-amarelo">+500 XP · STAGE CLEAR!</span><span class="cursor"></span></code></pre>
           </div>
         </article>
 
+        <p class="sub-titulo">Missões secundárias</p>
         <div class="grade">
-          <article class="projeto" data-tipo="qa">
+          <article class="projeto caixa" data-tipo="qa">
             <p class="tipo">Ferramenta de QA</p>
             <h3>TestManager</h3>
             <p>Plataforma de gestão de QA: casos de teste com passos e pré-requisitos, execução com status (aprovado, reprovado, parcial), central de bugs com evidências, vínculo com tickets e dashboard por equipe.</p>
             <ul class="tags"><li>React</li><li>Firebase</li><li>Vite</li></ul>
             <div class="links">
-              <a href="https://test-manager-8484d.web.app" target="_blank" rel="noopener">Acessar ↗</a>
+              <a href="https://test-manager-8484d.web.app" target="_blank" rel="noopener">Jogar ↗</a>
               <a href="https://github.com/Ericklucenaa/TestManager" target="_blank" rel="noopener">Código</a>
             </div>
           </article>
 
-          <article class="projeto" data-tipo="qa">
+          <article class="projeto caixa" data-tipo="qa">
             <p class="tipo">Automação E2E</p>
             <h3>Kabum · Cypress</h3>
             <p>Fluxo de compra de ponta a ponta em um e-commerce real de grande porte: login, inclusão de produto no carrinho e remoção do item.</p>
@@ -264,7 +296,7 @@
             </div>
           </article>
 
-          <article class="projeto" data-tipo="qa">
+          <article class="projeto caixa" data-tipo="qa">
             <p class="tipo">Automação E2E</p>
             <h3>Kanban · Cypress</h3>
             <p>Fluxo completo em um quadro Kanban: adiciona tarefas em todas as listas, cria uma nova lista, valida e exclui tudo, além de testar a troca de tema claro/escuro.</p>
@@ -274,29 +306,29 @@
             </div>
           </article>
 
-          <article class="projeto" data-tipo="dev">
+          <article class="projeto caixa" data-tipo="dev">
             <p class="tipo">Aplicativo · Web e Windows</p>
             <h3>Concord</h3>
             <p>Aplicativo de comunicação em tempo real: servidores, canais de texto e voz (WebRTC), mensagens diretas, cargos e moderação. Versão web e instalador para Windows.</p>
             <ul class="tags"><li>JavaScript</li><li>WebRTC</li><li>Firebase</li></ul>
             <div class="links">
-              <a href="https://concord-3af70.web.app" target="_blank" rel="noopener">Acessar ↗</a>
+              <a href="https://concord-3af70.web.app" target="_blank" rel="noopener">Jogar ↗</a>
               <a href="https://github.com/Ericklucenaa/Concord" target="_blank" rel="noopener">Código</a>
             </div>
           </article>
 
-          <article class="projeto" data-tipo="dev">
+          <article class="projeto caixa" data-tipo="dev">
             <p class="tipo">Plataforma web</p>
             <h3>Epsync</h3>
             <p>Plataforma para acompanhar e sincronizar séries, filmes e animes em tempo real, com domínio próprio.</p>
             <ul class="tags"><li>React</li><li>TypeScript</li><li>Express</li></ul>
             <div class="links">
-              <a href="https://epsync.com.br" target="_blank" rel="noopener">Acessar ↗</a>
+              <a href="https://epsync.com.br" target="_blank" rel="noopener">Jogar ↗</a>
               <a href="https://github.com/Ericklucenaa/ShowTime" target="_blank" rel="noopener">Código</a>
             </div>
           </article>
 
-          <article class="projeto" data-tipo="dev">
+          <article class="projeto caixa" data-tipo="dev">
             <p class="tipo">App desktop</p>
             <h3>AutoDraw</h3>
             <p>Aplicativo para Windows que reproduz imagens com o mouse em programas de desenho (Paint, Krita, Photoshop), com níveis de qualidade e modos de traço configuráveis.</p>
@@ -307,7 +339,7 @@
             </div>
           </article>
 
-          <article class="projeto" data-tipo="dev">
+          <article class="projeto caixa" data-tipo="dev">
             <p class="tipo">Mod de jogo</p>
             <h3>Melhorias Enshrouded</h3>
             <p>Pacote de melhorias para o jogo Enshrouded: minimapa, tempo dos buffs, painel de opções em 3 idiomas, editor de save e instalador.</p>
@@ -319,73 +351,89 @@
         </div>
       </section>
 
-      <!-- ============ HABILIDADES ============ -->
-      <section class="secao container" id="habilidades">
-        <p class="rotulo">Caixa de ferramentas</p>
-        <h2>Habilidades</h2>
-        <div class="habilidades">
-          <div class="hab-card">
-            <h3>Automação de testes</h3>
+      <!-- ================= INVENTÁRIO ================= -->
+      <section class="secao container" id="inventario">
+        <h2><span class="num">04</span> Inventário</h2>
+        <div class="inventario">
+          <div class="slot caixa">
+            <p class="slot-titulo">Automação de testes</p>
             <ul class="tags"><li>Cypress</li><li>Selenium</li><li>UI Vision</li><li>Page Objects</li></ul>
           </div>
-          <div class="hab-card">
-            <h3>Testes de API</h3>
+          <div class="slot caixa">
+            <p class="slot-titulo">Testes de API</p>
             <ul class="tags"><li>Postman</li><li>Swagger</li><li>Testes de contrato</li><li>REST</li></ul>
           </div>
-          <div class="hab-card">
-            <h3>Testes manuais</h3>
+          <div class="slot caixa">
+            <p class="slot-titulo">Testes manuais</p>
             <ul class="tags"><li>Funcionais</li><li>Regressão</li><li>Exploratórios</li><li>Web e mobile</li></ul>
           </div>
-          <div class="hab-card">
-            <h3>Planejamento</h3>
+          <div class="slot caixa">
+            <p class="slot-titulo">Planejamento</p>
             <ul class="tags"><li>Casos de teste</li><li>Análise de requisitos</li><li>Gestão de defeitos</li></ul>
           </div>
-          <div class="hab-card">
-            <h3>Performance e CI/CD</h3>
+          <div class="slot caixa">
+            <p class="slot-titulo">Performance e CI/CD</p>
             <ul class="tags"><li>JMeter</li><li>GitHub Actions</li><li>Git</li></ul>
           </div>
-          <div class="hab-card">
-            <h3>Linguagens</h3>
+          <div class="slot caixa">
+            <p class="slot-titulo">Linguagens</p>
             <ul class="tags"><li>JavaScript</li><li>TypeScript</li><li>Python</li></ul>
           </div>
-          <div class="hab-card">
-            <h3>Métodos</h3>
+          <div class="slot caixa">
+            <p class="slot-titulo">Métodos</p>
             <ul class="tags"><li>Scrum</li><li>Kanban</li><li>IA aplicada a testes</li></ul>
           </div>
-          <div class="hab-card">
-            <h3>Comportamentais</h3>
+          <div class="slot caixa">
+            <p class="slot-titulo">Habilidades passivas</p>
             <ul class="tags"><li>Comunicação</li><li>Pensamento crítico</li><li>Resolução de problemas</li><li>Trabalho em equipe</li></ul>
           </div>
         </div>
 
-        <div class="extras">
-          <div>
-            <h3>Formação</h3>
+        <div class="raros">
+          <div class="slot caixa raro">
+            <p class="slot-titulo">◆ Item raro · Formação</p>
             <p><strong>Análise e Desenvolvimento de Sistemas</strong><br />UNIASSELVI · 2020</p>
           </div>
-          <div>
-            <h3>Idiomas</h3>
+          <div class="slot caixa raro">
+            <p class="slot-titulo">◆ Item raro · Idiomas</p>
             <p>Português (nativo) · Inglês (intermediário/avançado) · Espanhol (intermediário)</p>
           </div>
         </div>
       </section>
 
-      <!-- ============ CONTATO ============ -->
+      <!-- ================= CONTINUE? ================= -->
       <section class="secao container contato" id="contato">
-        <h2>Vamos conversar?</h2>
-        <p>Estou aberto a oportunidades em QA e automação de testes, presenciais em Belo Horizonte ou remotas.</p>
+        <p class="continue">CONTINUE?</p>
+        <p class="contagem" aria-hidden="true"><span id="contagem">9</span></p>
+        <h2 class="sr-only">Contato</h2>
+        <p class="contato-texto">
+          Estou aberto a oportunidades em QA e automação de testes, presenciais em Belo Horizonte ou
+          remotas. Vamos jogar no mesmo time?
+        </p>
         <div class="acoes centro">
-          <a class="botao primario grande" href="mailto:ericklucena2020@gmail.com">ericklucena2020@gmail.com</a>
+          <a class="botao primario grande" href="mailto:ericklucena2020@gmail.com">▶ Insert coin · Enviar e-mail</a>
           <button class="botao" type="button" id="copiar-email" data-email="ericklucena2020@gmail.com">Copiar e-mail</button>
         </div>
-        <p class="local">Belo Horizonte · MG · Brasil</p>
+        <p class="email-texto">ericklucena2020@gmail.com</p>
       </section>
     </main>
 
     <footer class="rodape container">
       <p>© <span id="ano">2026</span> Erick Henrique Lucena Silva</p>
+      <p class="dica">Dica: fique de olho nos bugs andando pela tela 🐞</p>
       <a href="https://github.com/Ericklucenaa" target="_blank" rel="noopener">github.com/Ericklucenaa</a>
     </footer>
+
+    <!-- notificações (conquistas do minijogo) -->
+    <div class="toasts" aria-live="polite"></div>
+
+    <!-- sprite do bug, em pixel art (8x8) -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="sprite-bug" viewBox="0 0 8 8" shape-rendering="crispEdges">
+        <path fill="currentColor" d="M2 0h1v1H2zM5 0h1v1H5zM3 1h2v1H3zM1 2h6v1H1zM0 3h1v1H0zM2 3h4v1H2zM7 3h1v1H7zM1 4h6v1H1zM0 5h1v1H0zM2 5h4v1H2zM7 5h1v1H7zM1 6h6v1H1zM2 7h1v1H2zM5 7h1v1H5z" />
+        <path fill="#0b0b1a" d="M3 4h2v1H3z" />
+      </symbol>
+    </svg>
 
     <script src="script.js" defer></script>
   </body>
