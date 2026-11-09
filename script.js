@@ -70,6 +70,28 @@
     }),
   )
 
+  // ---------- abas do "Como eu testo" (clique e setas do teclado) ----------
+  const abas = [...document.querySelectorAll('.aba')]
+  const ativarAba = (aba, focar = false) => {
+    abas.forEach((a) => {
+      const ativa = a === aba
+      a.classList.toggle('ativo', ativa)
+      a.setAttribute('aria-selected', String(ativa))
+      a.tabIndex = ativa ? 0 : -1
+      document.getElementById(a.getAttribute('aria-controls')).hidden = !ativa
+    })
+    if (focar) aba.focus()
+  }
+  abas.forEach((aba, i) => {
+    aba.addEventListener('click', () => ativarAba(aba))
+    aba.addEventListener('keydown', (e) => {
+      const passo = { ArrowRight: 1, ArrowLeft: -1 }[e.key]
+      if (!passo) return
+      e.preventDefault()
+      ativarAba(abas[(i + passo + abas.length) % abas.length], true)
+    })
+  })
+
   // ---------- copiar e-mail ----------
   const copiar = document.getElementById('copiar-email')
   copiar.addEventListener('click', async () => {

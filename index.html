@@ -51,6 +51,7 @@
           <li><a href="#perfil">Perfil</a></li>
           <li><a href="#fases">Fases</a></li>
           <li><a href="#missoes">Missões</a></li>
+          <li><a href="#como-testo">Como testo</a></li>
           <li><a href="#inventario">Inventário</a></li>
           <li><a href="#contato">Contato</a></li>
           <li class="hud-extra">
@@ -87,8 +88,9 @@
           </p>
           <div class="acoes">
             <a class="botao primario" href="#missoes">▶ Iniciar</a>
+            <a class="botao" href="https://www.linkedin.com/in/erick-lucena-b0a96a1b9/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="botao" href="https://github.com/Ericklucenaa" target="_blank" rel="noopener">GitHub</a>
-            <a class="botao" href="#contato">Contato</a>
+            <a class="botao" href="assets/Erick-Henrique-Lucena-Silva-Curriculo.pdf" download>Currículo PDF</a>
           </div>
         </div>
 
@@ -284,16 +286,6 @@
 
         <p class="sub-titulo">Missões secundárias</p>
         <div class="grade">
-          <article class="projeto caixa" data-tipo="qa">
-            <p class="tipo">Ferramenta de QA</p>
-            <h3>TestManager</h3>
-            <p>Plataforma de gestão de QA: casos de teste com passos e pré-requisitos, execução com status (aprovado, reprovado, parcial), central de bugs com evidências, vínculo com tickets e dashboard por equipe.</p>
-            <ul class="tags"><li>React</li><li>Firebase</li><li>Vite</li></ul>
-            <div class="links">
-              <a href="https://test-manager-8484d.web.app" target="_blank" rel="noopener">Jogar ↗</a>
-              <a href="https://github.com/Ericklucenaa/TestManager" target="_blank" rel="noopener">Código</a>
-            </div>
-          </article>
 
           <article class="projeto caixa" data-tipo="qa">
             <p class="tipo">Automação E2E</p>
@@ -360,9 +352,129 @@
         </div>
       </section>
 
+      <!-- ================= COMO EU TESTO ================= -->
+      <section class="secao container" id="como-testo">
+        <h2><span class="num">04</span> Como eu testo</h2>
+        <p class="intro-secao">
+          Do requisito ao bug report: um ciclo completo de teste da funcionalidade
+          <strong>Lista de compras</strong> do <a href="https://front.serverest.dev" target="_blank" rel="noopener">ServeRest</a>,
+          uma loja de estudo pública. O bug abaixo é real, foi reproduzido em 09/11/2026 no site em produção.
+        </p>
+
+        <div class="abas" role="tablist" aria-label="Artefatos de teste">
+          <button class="aba ativo" role="tab" aria-selected="true" aria-controls="painel-plano" id="aba-plano">1 · Plano de teste</button>
+          <button class="aba" role="tab" aria-selected="false" aria-controls="painel-casos" id="aba-casos" tabindex="-1">2 · Casos de teste</button>
+          <button class="aba" role="tab" aria-selected="false" aria-controls="painel-bug" id="aba-bug" tabindex="-1">3 · Bug report</button>
+        </div>
+
+        <!-- 1. plano -->
+        <div class="painel caixa" role="tabpanel" id="painel-plano" aria-labelledby="aba-plano">
+          <div class="plano">
+            <div>
+              <p class="ficha-rotulo">OBJETIVO</p>
+              <p>Garantir que o cliente pesquisa produtos, monta a lista e ajusta quantidades respeitando as regras de negócio, principalmente o <strong>estoque disponível</strong>.</p>
+            </div>
+            <div>
+              <p class="ficha-rotulo">ESCOPO</p>
+              <ul>
+                <li><b>Dentro:</b> pesquisa, adicionar à lista, aumentar/diminuir quantidade, limpar lista.</li>
+                <li><b>Fora:</b> carrinho e pagamento, cadastro de produtos (coberto em outro plano).</li>
+              </ul>
+            </div>
+            <div>
+              <p class="ficha-rotulo">ABORDAGEM</p>
+              <ul>
+                <li>Teste exploratório guiado pelos riscos abaixo.</li>
+                <li>Casos de teste funcionais com valores-limite de estoque (0, 1 e N).</li>
+                <li>Massa de dados criada pela API; fluxos críticos automatizados com Cypress.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="ficha-rotulo">RISCOS PRIORIZADOS</p>
+              <ul>
+                <li><b>Alto:</b> vender acima do estoque.</li>
+                <li><b>Médio:</b> total e preço exibidos incorretamente.</li>
+                <li><b>Baixo:</b> lista "vazando" entre sessões (dados no navegador).</li>
+              </ul>
+            </div>
+            <div class="plano-largo">
+              <p class="ficha-rotulo">CRITÉRIO DE SAÍDA</p>
+              <p>Todos os casos de prioridade alta aprovados e nenhum bug de severidade alta em aberto.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. casos -->
+        <div class="painel caixa" role="tabpanel" id="painel-casos" aria-labelledby="aba-casos" hidden>
+          <div class="tabela-rolagem">
+            <table class="casos">
+              <thead>
+                <tr><th>ID</th><th>Cenário</th><th>Pré-condição</th><th>Resultado esperado</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CT01</td><td>Adicionar produto disponível à lista</td><td>Estoque ≥ 1</td>
+                  <td>Abre a lista com "Total: 1"</td><td><span class="st ok">✔ Aprovado</span><small>automatizado</small></td>
+                </tr>
+                <tr>
+                  <td>CT02</td><td>Aumentar quantidade dentro do estoque</td><td>Estoque = 5</td>
+                  <td>"+" muda para "Total: 2"</td><td><span class="st ok">✔ Aprovado</span><small>automatizado</small></td>
+                </tr>
+                <tr>
+                  <td>CT03</td><td>Limitar quantidade ao estoque</td><td>Estoque = 1</td>
+                  <td>"+" não passa de 1 e avisa o cliente</td><td><span class="st falha">✖ Reprovado</span><small>BUG-01</small></td>
+                </tr>
+                <tr>
+                  <td>CT04</td><td>Bloquear produto sem estoque</td><td>Estoque = 0</td>
+                  <td>Não permite adicionar; mostra "indisponível"</td><td><span class="st falha">✖ Reprovado</span><small>BUG-01</small></td>
+                </tr>
+                <tr>
+                  <td>CT05</td><td>Limpar lista</td><td>Lista com itens</td>
+                  <td>Mostra "Seu carrinho está vazio"</td><td><span class="st ok">✔ Aprovado</span><small>automatizado</small></td>
+                </tr>
+                <tr>
+                  <td>CT06</td><td>Exibir valor em reais</td><td>Item com preço ≥ R$ 1.000</td>
+                  <td>Formato "R$ 12.294,00"</td><td><span class="st aviso">! Melhoria</span><small>exibe "R$12294"</small></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 3. bug report -->
+        <div class="painel caixa" role="tabpanel" id="painel-bug" aria-labelledby="aba-bug" hidden>
+          <div class="bug-report">
+            <div class="br-texto">
+              <p class="br-id">BUG-01 · <span class="sev">Severidade alta</span> · Prioridade alta</p>
+              <h3>Lista de compras permite quantidade acima do estoque, inclusive com estoque zerado</h3>
+              <dl class="br-campos">
+                <dt>Ambiente</dt><dd>front.serverest.dev · Chrome/Electron · 09/11/2026</dd>
+                <dt>Pré-condição</dt><dd>Usuário comum logado; produto com estoque = 1 (e outro com estoque = 0).</dd>
+                <dt>Passos</dt>
+                <dd>
+                  <ol>
+                    <li>Pesquisar o produto na loja.</li>
+                    <li>Clicar em "Adicionar a lista".</li>
+                    <li>Na Lista de Compras, clicar em "+" duas vezes.</li>
+                  </ol>
+                </dd>
+                <dt>Esperado</dt><dd>Quantidade limitada a 1, com aviso de estoque insuficiente. Produto com estoque 0 não pode ser adicionado.</dd>
+                <dt>Obtido</dt><dd>Lista mostra <b>"Total: 3"</b> para estoque 1. Produto com estoque 0 entra na lista com "Total: 1".</dd>
+                <dt>Causa provável</dt><dd>A rotina de adicionar incrementa a quantidade sem comparar com o campo <code>quantidade</code> (estoque) do produto.</dd>
+                <dt>Reprodução</dt><dd>100% · confirmado também por teste automatizado (Cypress).</dd>
+              </dl>
+            </div>
+            <figure class="br-evidencia">
+              <img src="assets/bug-evidencia-estoque.png" alt="Captura da Lista de Compras mostrando Total: 3 para um produto com estoque 1" width="570" height="650" loading="lazy" />
+              <figcaption>Evidência: estoque = 1, lista com "Total: 3"</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <!-- ================= INVENTÁRIO ================= -->
       <section class="secao container" id="inventario">
-        <h2><span class="num">04</span> Inventário</h2>
+        <h2><span class="num">05</span> Inventário</h2>
         <div class="inventario">
           <div class="slot caixa">
             <p class="slot-titulo">Automação de testes</p>
@@ -421,6 +533,8 @@
         </p>
         <div class="acoes centro">
           <a class="botao primario grande" href="mailto:ericklucena2020@gmail.com">▶ Insert coin · Enviar e-mail</a>
+          <a class="botao" href="https://www.linkedin.com/in/erick-lucena-b0a96a1b9/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="botao" href="assets/Erick-Henrique-Lucena-Silva-Curriculo.pdf" download>Currículo PDF</a>
           <button class="botao" type="button" id="copiar-email" data-email="ericklucena2020@gmail.com">Copiar e-mail</button>
         </div>
         <p class="email-texto">ericklucena2020@gmail.com</p>
@@ -430,7 +544,10 @@
     <footer class="rodape container">
       <p>© <span id="ano">2026</span> Erick Henrique Lucena Silva</p>
       <p class="dica">Dica: fique de olho nos bugs andando pela tela 🐞</p>
-      <a href="https://github.com/Ericklucenaa" target="_blank" rel="noopener">github.com/Ericklucenaa</a>
+      <p class="rodape-links">
+        <a href="https://www.linkedin.com/in/erick-lucena-b0a96a1b9/" target="_blank" rel="noopener">LinkedIn</a>
+        · <a href="https://github.com/Ericklucenaa" target="_blank" rel="noopener">GitHub</a>
+      </p>
     </footer>
 
     <!-- notificações (conquistas do minijogo) -->

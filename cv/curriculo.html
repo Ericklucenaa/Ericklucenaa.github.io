@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Erick Henrique Lucena Silva · Currículo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @page {
+        size: A4;
+        margin: 10mm 13mm;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 8.8pt;
+        line-height: 1.4;
+        color: #1f2937;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a {
+        color: #1b3a57;
+        text-decoration: none;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #1b3a57;
+      }
+      h1 {
+        margin: 0;
+        font-size: 21pt;
+        line-height: 1.1;
+        color: #1b3a57;
+        letter-spacing: -0.01em;
+      }
+      .cargo {
+        margin: 4px 0 8px;
+        font-size: 11.5pt;
+        font-weight: 600;
+        color: #374151;
+      }
+      .contatos {
+        margin: 0;
+        font-size: 8.8pt;
+        color: #4b5563;
+      }
+      .contatos span + span::before {
+        content: '·';
+        margin: 0 6px;
+        color: #9ca3af;
+      }
+      .foto {
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex: none;
+      }
+      h2 {
+        margin: 10px 0 4px;
+        font-size: 10.5pt;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #1b3a57;
+      }
+      p {
+        margin: 0;
+      }
+      .item {
+        margin-bottom: 6px;
+        break-inside: avoid;
+      }
+      .item-topo {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+      }
+      .item h3 {
+        margin: 0;
+        font-size: 10pt;
+      }
+      .periodo {
+        font-size: 8.8pt;
+        color: #6b7280;
+        white-space: nowrap;
+      }
+      .empresa {
+        font-weight: 600;
+        color: #2c5a85;
+        margin-bottom: 3px;
+      }
+      ul {
+        margin: 2px 0 0;
+        padding-left: 15px;
+      }
+      li {
+        margin-bottom: 1.5px;
+      }
+      .habilidades {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 3px 12px;
+      }
+      .habilidades dt {
+        font-weight: 600;
+        color: #374151;
+      }
+      .habilidades dd {
+        margin: 0;
+      }
+      .duas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Erick Henrique Lucena Silva</h1>
+        <p class="cargo">QA Engineer · Analista de Testes</p>
+        <p class="contatos">
+          <span>Belo Horizonte – MG</span>
+          <span><a href="mailto:ericklucena2020@gmail.com">ericklucena2020@gmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/erick-lucena-b0a96a1b9/">linkedin.com/in/erick-lucena-b0a96a1b9</a></span>
+          <span><a href="https://github.com/Ericklucenaa">github.com/Ericklucenaa</a></span>
+          <span><a href="https://ericklucenaa.github.io">ericklucenaa.github.io</a></span>
+        </p>
+      </div>
+      <img class="foto" src="../assets/foto.jpg" alt="" />
+    </header>
+
+    <h2>Resumo</h2>
+    <p>
+      QA com 5 anos de experiência em testes funcionais, de regressão e automação web com Cypress.
+      Atuo da análise de requisitos e regras de negócio até o reteste das correções, em times ágeis,
+      com foco em estabilidade e na experiência do usuário. A experiência anterior em gestão e ensino
+      me deu comunicação clara com desenvolvimento e negócio.
+    </p>
+
+    <h2>Experiência profissional</h2>
+    <div class="item">
+      <div class="item-topo"><h3>Analista de Testes / QA</h3><span class="periodo">2025 – 2026</span></div>
+      <p class="empresa">90 Tecnologia (90TI)</p>
+      <ul>
+        <li>Execução de testes funcionais e de regressão das funcionalidades entregues.</li>
+        <li>Análise e validação de requisitos e regras de negócio, apontando inconsistências e impactos antes do desenvolvimento.</li>
+        <li>Elaboração e execução de cenários e casos de teste; registro de defeitos com as informações necessárias para reprodução e correção.</li>
+        <li>Acompanhamento das correções e reteste junto ao time de desenvolvimento, em processo ágil.</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div class="item-topo"><h3>Analista de Sistemas · QA, Automação de Testes e UX</h3><span class="periodo">2021 – 2025</span></div>
+      <p class="empresa">Memory</p>
+      <ul>
+        <li>Responsável pela automação de testes web com Cypress.</li>
+        <li>Testes funcionais e de regressão, identificação e reporte de defeitos.</li>
+        <li>Análise de requisitos e aplicação de metodologias ágeis para otimizar o ciclo de desenvolvimento.</li>
+        <li>Atuação junto aos desenvolvedores e em UX para entregas robustas e de alta performance.</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div class="item-topo"><h3>Gerente Administrativo</h3><span class="periodo">2014 – 2021</span></div>
+      <p class="empresa">Official Store</p>
+      <ul>
+        <li>Gestão de processos operacionais e administrativos com foco em eficiência.</li>
+        <li>Implantação de soluções tecnológicas para a experiência do cliente e a gestão interna.</li>
+        <li>Liderança de equipe e definição de estratégias para metas organizacionais.</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div class="item-topo"><h3>Instrutor de Cursos Livres</h3><span class="periodo">2012 – 2014</span></div>
+      <p class="empresa">Centro de Formação Profissional</p>
+      <ul>
+        <li>Aulas de informática, criação de material didático e suporte técnico aos alunos.</li>
+      </ul>
+    </div>
+
+    <h2>Projetos em destaque</h2>
+    <div class="item">
+      <div class="item-topo">
+        <h3>Cypress + ServeRest: testes E2E e de API</h3>
+        <span class="periodo"><a href="https://github.com/Ericklucenaa/cypress-serverest">github.com/Ericklucenaa/cypress-serverest</a></span>
+      </div>
+      <p>27 testes (15 de API, 12 de interface) em TypeScript, com testes de contrato via JSON Schema, <i>cy.intercept</i>, massa de dados criada pela API e pipeline no GitHub Actions publicando o relatório.</p>
+    </div>
+    <div class="item">
+      <div class="item-topo">
+        <h3>Ciclo de teste documentado · Lista de compras</h3>
+        <span class="periodo"><a href="https://ericklucenaa.github.io/#como-testo">ericklucenaa.github.io/#como-testo</a></span>
+      </div>
+      <p>Plano de teste baseado em risco, casos de teste com valores-limite e bug report de um defeito real (venda acima do estoque) com evidência e reprodução automatizada.</p>
+    </div>
+
+    <h2>Habilidades</h2>
+    <dl class="habilidades">
+      <dt>Testes</dt><dd>Funcionais, regressão, exploratórios (web e mobile), design de casos de teste, análise de requisitos, gestão de defeitos</dd>
+      <dt>Automação</dt><dd>Cypress, Selenium, UI Vision, Page Objects</dd>
+      <dt>API e performance</dt><dd>Postman, Swagger, testes de contrato (JSON Schema), JMeter</dd>
+      <dt>CI/CD e versionamento</dt><dd>GitHub Actions, Git</dd>
+      <dt>Linguagens</dt><dd>JavaScript, TypeScript, Python</dd>
+      <dt>Métodos</dt><dd>Scrum, Kanban, IA aplicada à produtividade em testes</dd>
+    </dl>
+
+    <div class="duas">
+      <div>
+        <h2>Formação</h2>
+        <p><b>Análise e Desenvolvimento de Sistemas</b><br />UNIASSELVI · 2020</p>
+      </div>
+      <div>
+        <h2>Idiomas</h2>
+        <p>Português (nativo) · Inglês (intermediário/avançado) · Espanhol (intermediário)</p>
+      </div>
+    </div>
+  </body>
+</html>
