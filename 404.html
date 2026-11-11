@@ -9,29 +9,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
     <script>
-      try {
-        const t = localStorage.getItem('tema')
-        if (t) document.documentElement.dataset.theme = t
-      } catch (e) {}
+      ;(function () {
+        var t = null
+        try {
+          t = localStorage.getItem('tema')
+        } catch (e) {}
+        if (t !== 'light' && t !== 'dark')
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        document.documentElement.dataset.theme = t
+      })()
     </script>
   </head>
   <body>
     <header class="topo">
       <nav class="nav container" aria-label="Principal">
-        <a class="marca" href="/" aria-label="Início">
-          <svg class="marca-icone" viewBox="0 0 40 40" aria-hidden="true"><rect class="logo-fundo" width="40" height="40" rx="11"/><g class="logo-check" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m8.5 11.6 2 2 3.6-3.8"/><path d="m8.5 20.1 2 2 3.6-3.8"/><path d="m8.5 28.6 2 2 3.6-3.8"/></g><g class="logo-linha"><rect x="17.5" y="9.6" width="14" height="3.4" rx="1.7"/><rect x="17.5" y="18.3" width="10" height="3.4" rx="1.7"/><rect x="17.5" y="27" width="14" height="3.4" rx="1.7"/></g></svg>
-          <span class="marca-nome">Erick Henrique</span>
+        <a class="marca" href="/">
+          <span class="marca-nome">Erick Henrique Lucena</span>
+          <span class="marca-papel">QA Engineer</span>
         </a>
       </nav>
     </header>
 
     <main class="container pagina-404">
-      <article class="painel cartao-404">
+      <article class="cartao-404">
         <p class="br-id">BUG-404 · <span class="sev">Severidade baixa</span> · Prioridade: voltar para a home</p>
         <h1>Página não encontrada</h1>
         <dl class="br-campos">
