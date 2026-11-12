@@ -494,72 +494,66 @@ b {
   fill: var(--junta);
 }
 
-/* o relatório preso na parede, que a luz ilumina */
-.relatorio {
+/* o currículo preso na parede, que a luz ilumina */
+.curriculo-mini {
   position: absolute;
-  left: 3%;
-  top: 17%;
-  width: 52%;
-  padding: 7% 7% 6%;
+  left: 9%;
+  top: 9%;
+  width: 40%;
+  aspect-ratio: 520 / 735;
+  padding: 2.2%;
   background: var(--papel);
-  color: var(--papel-texto);
-  font: 400 clamp(9.5px, 2.4cqw, 11.5px) / 1.55 var(--mono);
   transform: rotate(-2.2deg);
   box-shadow: 0 1px 0 rgb(0 0 0 / 0.08), 0 10px 24px -12px rgb(0 0 0 / 0.45);
-  transition: background 0.3s, color 0.3s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s;
 }
-:root[data-theme='light'] .relatorio {
-  background-image: linear-gradient(250deg, #fffdf6 0%, #f6edda 100%);
+.curriculo-mini img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  filter: brightness(0.42) sepia(0.25) contrast(0.95);
+  transition: filter 0.4s ease;
 }
-.relatorio::before {
+:root[data-theme='light'] .curriculo-mini img {
+  filter: sepia(0.12) saturate(1.05);
+}
+.curriculo-mini::before {
   /* fita adesiva */
   content: '';
   position: absolute;
+  z-index: 1;
   top: -9px;
   left: 50%;
   width: 54px;
   height: 18px;
   transform: translateX(-50%) rotate(3deg);
-  background: rgb(214 200 168 / 0.55);
+  background: rgb(214 200 168 / 0.6);
 }
-:root[data-theme='dark'] .relatorio::before {
+:root[data-theme='dark'] .curriculo-mini::before {
   background: rgb(90 82 68 / 0.6);
 }
-.relatorio-cab {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 9px;
-  padding-bottom: 7px;
-  border-bottom: 1px dashed currentColor;
-}
-.relatorio-cab span:first-child {
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-.relatorio-cab span:last-child {
+.curriculo-mini-rotulo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -26px;
+  font: 500 11px/1 var(--mono);
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--texto-3);
   opacity: 0.75;
+  transform: rotate(2.2deg);
 }
-.relatorio ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.curriculo-mini:hover,
+.curriculo-mini:focus-visible {
+  transform: rotate(-1deg) translateY(-3px);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.08), 0 16px 30px -12px rgb(0 0 0 / 0.5);
 }
-.relatorio li,
-.relatorio-total {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-}
-.relatorio b {
-  font-weight: 500;
-  color: var(--papel-ok);
-}
-.relatorio-total {
-  margin-top: 9px;
-  padding-top: 7px;
-  border-top: 1px dashed currentColor;
-  font-weight: 500;
+.curriculo-mini:focus-visible {
+  outline: 2px solid var(--latao);
+  outline-offset: 4px;
 }
 
 /* área de toque da cordinha (o desenho está no SVG) */
